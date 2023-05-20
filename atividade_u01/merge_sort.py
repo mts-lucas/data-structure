@@ -1,6 +1,7 @@
 vetor = [5, 6, 4, 2, 8, 1]
 
 print(vetor)
+print(len(vetor))
 
 
 def merge(v: list[int], s: int, m: int, e: int) -> list[int]:
