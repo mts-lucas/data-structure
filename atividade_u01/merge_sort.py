@@ -40,3 +40,4 @@ if __name__ == "__main__":
     mergeSort(vetor, 0, e)
     end = time.time_ns()
     final_time = end - start
+    print(final_time)

@@ -34,3 +34,4 @@ if __name__ == "__main__":
     countingSort(vetor, n)
     end = time.time_ns()
     final_time = end - start
+    print(final_time)
