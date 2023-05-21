@@ -1,6 +1,7 @@
-vetor = [5, 6, 4, 2, 8, 1]
+# vetor = [5, 6, 4, 2, 8, 1]
 
-print(vetor)
+import sys
+import time
 
 
 def partition(v: list[int], s: int, e: int) -> int:
@@ -22,5 +23,11 @@ def quickSort(v: list[int], s: int, e: int):
         quickSort(v, (p + 1), e)
 
 
-quickSort(vetor, 0, (len(vetor) - 1))
-print(vetor)
+if __name__ == "__main__":
+
+    vetor = list(map(int, sys.argv[1:]))
+    e = len(vetor) - 1
+    start = time.time_ns()
+    quickSort(vetor, 0, e)
+    end = time.time_ns()
+    final_time = end - start

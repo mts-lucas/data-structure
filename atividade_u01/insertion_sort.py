@@ -1,5 +1,7 @@
-vetor = [5, 6, 4, 2]
-n = 4
+# vetor = [5, 6, 4, 2]
+# n = 4
+import sys
+import time
 
 
 def insertionSort(vetor: list[int], n: int):
@@ -10,4 +12,11 @@ def insertionSort(vetor: list[int], n: int):
             i -= 1
 
 
-print(vetor)
+if __name__ == "__main__":
+
+    vetor = list(map(int, sys.argv[1:]))
+    n = len(vetor)
+    start = time.time_ns()
+    insertionSort(vetor, n)
+    end = time.time_ns()
+    final_time = end - start

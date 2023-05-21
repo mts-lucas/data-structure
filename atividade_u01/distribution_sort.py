@@ -1,9 +1,13 @@
-vetor = [5, 6, 4, 2, 8, 1]
+import sys
+import time
 
-print(vetor)
+# vetor = [5, 6, 4, 2, 8, 1]
+# start = 0
+# end = 0
+# nano = 1000000000
 
 
-def coutingSort(v: list[int], n):
+def countingSort(v: list[int], n):
     b = max(v)
     c = [0] * (b + 1)
     w = [0] * n
@@ -22,5 +26,11 @@ def coutingSort(v: list[int], n):
         v[i] = w[i]
 
 
-coutingSort(vetor, len(vetor))
-print(vetor)
+if __name__ == "__main__":
+
+    vetor = list(map(int, sys.argv[1:]))
+    n = len(vetor)
+    start = time.time_ns()
+    countingSort(vetor, n)
+    end = time.time_ns()
+    final_time = end - start

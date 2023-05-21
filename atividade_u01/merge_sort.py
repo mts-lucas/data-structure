@@ -1,7 +1,9 @@
-vetor = [5, 6, 4, 2, 8, 1]
+# vetor = [5, 6, 4, 2, 8, 1]
 
-print(vetor)
-print(len(vetor))
+# print(vetor)
+# print(len(vetor))
+import sys
+import time
 
 
 def merge(v: list[int], s: int, m: int, e: int) -> list[int]:
@@ -30,6 +32,11 @@ def mergeSort(v: list[int], s: int, e: int) -> list[int]:
     return v
 
 
-mergeSort(vetor, 0, len(vetor) - 1)
+if __name__ == "__main__":
 
-print(vetor)
+    vetor = list(map(int, sys.argv[1:]))
+    e = len(vetor) - 1
+    start = time.time_ns()
+    mergeSort(vetor, 0, e)
+    end = time.time_ns()
+    final_time = end - start
