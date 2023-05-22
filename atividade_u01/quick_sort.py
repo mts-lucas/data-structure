@@ -3,6 +3,8 @@
 import sys
 import time
 
+from randomic_vetor import randVetor
+
 
 def partition(v: list[int], s: int, e: int) -> int:
     d = s - 1
@@ -25,7 +27,8 @@ def quickSort(v: list[int], s: int, e: int):
 
 if __name__ == "__main__":
 
-    vetor = list(map(int, sys.argv[1:]))
+    input = int(sys.argv[1])
+    vetor = randVetor(input)
     e = len(vetor) - 1
     start = time.time_ns()
     quickSort(vetor, 0, e)

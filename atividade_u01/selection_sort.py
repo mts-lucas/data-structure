@@ -4,6 +4,8 @@
 import sys
 import time
 
+from randomic_vetor import randVetor
+
 
 def selectionSort(vetor: list[int], n: int):
 
@@ -20,8 +22,9 @@ def selectionSort(vetor: list[int], n: int):
 
 if __name__ == "__main__":
 
-    vetor = list(map(int, sys.argv[1:]))
-    n = len(vetor) - 1
+    input = int(sys.argv[1])
+    vetor = randVetor(input)
+    n = len(vetor)
     start = time.time_ns()
     selectionSort(vetor, n)
     end = time.time_ns()

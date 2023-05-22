@@ -5,6 +5,8 @@
 import sys
 import time
 
+from randomic_vetor import randVetor
+
 
 def merge(v: list[int], s: int, m: int, e: int) -> list[int]:
     p = s
@@ -34,7 +36,8 @@ def mergeSort(v: list[int], s: int, e: int) -> list[int]:
 
 if __name__ == "__main__":
 
-    vetor = list(map(int, sys.argv[1:]))
+    input = int(sys.argv[1])
+    vetor = randVetor(input)
     e = len(vetor) - 1
     start = time.time_ns()
     mergeSort(vetor, 0, e)

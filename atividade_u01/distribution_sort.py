@@ -1,6 +1,8 @@
 import sys
 import time
 
+from randomic_vetor import randVetor
+
 # vetor = [5, 6, 4, 2, 8, 1]
 # start = 0
 # end = 0
@@ -28,7 +30,8 @@ def countingSort(v: list[int], n):
 
 if __name__ == "__main__":
 
-    vetor = list(map(int, sys.argv[1:]))
+    input = int(sys.argv[1])
+    vetor = randVetor(input)
     n = len(vetor)
     start = time.time_ns()
     countingSort(vetor, n)

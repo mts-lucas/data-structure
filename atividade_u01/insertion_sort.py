@@ -3,6 +3,8 @@
 import sys
 import time
 
+from randomic_vetor import randVetor
+
 
 def insertionSort(vetor: list[int], n: int):
     for e in range(1, n):
@@ -14,7 +16,8 @@ def insertionSort(vetor: list[int], n: int):
 
 if __name__ == "__main__":
 
-    vetor = list(map(int, sys.argv[1:]))
+    input = int(sys.argv[1])
+    vetor = randVetor(input)
     n = len(vetor)
     start = time.time_ns()
     insertionSort(vetor, n)
