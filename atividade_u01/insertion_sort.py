@@ -5,6 +5,12 @@ import time
 
 from randomic_vetor import randVetor
 
+# pior caso
+# from randomic_vetor import invertVetor
+
+# melhor caso
+# from randomic_vetor import sortVetor
+
 
 def insertionSort(vetor: list[int], n: int):
     for e in range(1, n):
@@ -17,7 +23,16 @@ def insertionSort(vetor: list[int], n: int):
 if __name__ == "__main__":
 
     input = int(sys.argv[1])
+
+    # caso medio
     vetor = randVetor(input)
+
+    # pior caso
+    # vetor = invertVetor(input)
+
+    # melhor caso
+    # vetor = sortVetor(input)
+
     n = len(vetor)
     start = time.time_ns()
     insertionSort(vetor, n)
