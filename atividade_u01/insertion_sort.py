@@ -3,6 +3,7 @@
 import sys
 import time
 
+# caso medio
 from randomic_vetor import randVetor
 
 # pior caso

@@ -3,11 +3,6 @@ import time
 
 from randomic_vetor import randVetor
 
-# vetor = [5, 6, 4, 2, 8, 1]
-# start = 0
-# end = 0
-# nano = 1000000000
-
 
 def countingSort(v: list[int], n):
     b = max(v)
