@@ -16,6 +16,7 @@ def invertVetor(n):
     vetor = []
     for i in range(n, -1, -1):
         vetor.append(i)
+    return vetor
 
 
 # melhor caso insertion
@@ -23,3 +24,4 @@ def sortVetor(n):
     vetor = []
     for i in range(n):
         vetor.append(i)
+    return vetor

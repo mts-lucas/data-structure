@@ -4,7 +4,10 @@ import sys
 import time
 
 # caso medio
-from randomic_vetor import randVetor
+# from randomic_vetor import randVetor
+
+# pior caso 
+from randomic_vetor import invertVetor
 
 
 def partition(v: list[int], s: int, e: int) -> int:
@@ -29,7 +32,12 @@ def quickSort(v: list[int], s: int, e: int):
 if __name__ == "__main__":
 
     input = int(sys.argv[1])
-    vetor = randVetor(input)
+    # caso medio
+    # vetor = randVetor(input)
+
+    # pior caso
+    vetor = invertVetor(input)
+
     e = len(vetor) - 1
     start = time.time_ns()
     quickSort(vetor, 0, e)
