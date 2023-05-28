@@ -1,7 +1,3 @@
-# vetor = [5, 6, 4, 2, 8, 1]
-
-# print(vetor)
-# print(len(vetor))
 import sys
 import time
 

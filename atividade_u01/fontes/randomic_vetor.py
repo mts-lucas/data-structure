@@ -1,5 +1,7 @@
 from random import randint
 
+# Algoritmos que criam vetores
+
 
 def randVetor(n):
 

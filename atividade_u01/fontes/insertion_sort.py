@@ -3,14 +3,14 @@
 import sys
 import time
 
-# caso medio
-# from randomic_vetor import randVetor
+# para caso medio tire o comentario da linha abaixo e comente os demais
+from randomic_vetor import randVetor
 
-# pior caso
+# para pior caso tire o comentario da linha abaixo e comente os demais
 # from randomic_vetor import invertVetor
 
-# melhor caso
-from randomic_vetor import sortVetor
+# para melhor caso tire o comentario da linha abaixo e comente os demais
+# from randomic_vetor import sortVetor
 
 
 def insertionSort(vetor: list[int], n: int):
@@ -26,13 +26,13 @@ if __name__ == "__main__":
     input = int(sys.argv[1])
 
     # caso medio
-    # vetor = randVetor(input)
+    vetor = randVetor(input)
 
     # pior caso
     # vetor = invertVetor(input)
 
     # melhor caso
-    vetor = sortVetor(input)
+    # vetor = sortVetor(input)
 
     n = len(vetor)
     start = time.time_ns()

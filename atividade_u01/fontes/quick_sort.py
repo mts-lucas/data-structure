@@ -1,13 +1,11 @@
-# vetor = [5, 6, 4, 2, 8, 1]
-
 import sys
 import time
 
-# caso medio
-# from randomic_vetor import randVetor
+# para caso medio tire o comentario da linha abaixo e comente os demais
+from randomic_vetor import randVetor
 
-# pior caso 
-from randomic_vetor import invertVetor
+# para pior caso tire o comentario da linha abaixo e comente os demais
+# from randomic_vetor import invertVetor
 
 
 def partition(v: list[int], s: int, e: int) -> int:
@@ -33,10 +31,10 @@ if __name__ == "__main__":
 
     input = int(sys.argv[1])
     # caso medio
-    # vetor = randVetor(input)
+    vetor = randVetor(input)
 
     # pior caso
-    vetor = invertVetor(input)
+    # vetor = invertVetor(input)
 
     e = len(vetor) - 1
     start = time.time_ns()
