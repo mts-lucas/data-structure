@@ -5,7 +5,8 @@ class Node:
         self.left = left
 
     def __str__(self):
-        return f'{self.left} <- {self.key} -> {self.right}'
+        # return f'{self.left} <- {self.key} -> {self.right}'
+        return f'{self.key}<'
 
 
 class Tree:
@@ -30,6 +31,15 @@ class Tree:
 
         return root
 
+    def print_tree(self):
+        self._recursive_print(self.root)
+
+    def _recursive_print(self, root, level=0):
+        if root is not None:
+            self._recursive_print(root.right, level=level + 1)
+            print('    ' * level + str(root))
+            self._recursive_print(root.left, level=level + 1)
+
 
 tree = Tree()
 
@@ -38,7 +48,8 @@ tree.insert(2)
 tree.insert(1)
 tree.insert(8)
 tree.insert(7)
+tree.insert(6)
 tree.insert(9)
 tree.insert(4)
 tree.insert(3)
-print(tree.root)
+tree.print_tree()
