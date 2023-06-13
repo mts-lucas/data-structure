@@ -22,11 +22,11 @@ class Tree:
             return Node(key=value)
         else:
             if root.key < value:
-                root.right = self._recursive_insert(root=root.right,
-                                                    value=value)
+                root.right = self.__recursive_insert(root=root.right,
+                                                     value=value)
             else:
-                root.left = self._recursive_insert(root=root.left,
-                                                   value=value)
+                root.left = self.__recursive_insert(root=root.left,
+                                                    value=value)
 
         return root
 
@@ -35,9 +35,9 @@ class Tree:
 
     def __recursive_print(self, root, level=0):
         if root is not None:
-            self._recursive_print(root.right, level=level + 1)
+            self.__recursive_print(root.right, level=level + 1)
             print('    ' * level + str(root))
-            self._recursive_print(root.left, level=level + 1)
+            self.__recursive_print(root.left, level=level + 1)
 
     def ascending_order(self):
         self.__ascending_order(self.root)
@@ -57,6 +57,22 @@ class Tree:
             print(root.key)
             self.__decreasing_order(root.left)
 
+    def search(self, key):
+        print(self.__recursive_search(root=self.root, key=key))
+
+    def __recursive_search(self, root, key):
+
+        if root is None:
+            return False
+
+        elif root.key == key:
+            return True
+
+        elif root.key < key:
+            return self.__recursive_search(root.right, key)
+        else:
+            return self.__recursive_search(root.left, key)
+
 
 tree = Tree()
 
@@ -64,11 +80,7 @@ tree.insert(5)
 tree.insert(2)
 tree.insert(1)
 tree.insert(8)
-tree.insert(7)
-tree.insert(6)
 tree.insert(9)
 tree.insert(4)
 tree.insert(3)
-# tree.print_tree()
-# tree.ascending_order()
-tree.decreasing_order()
+tree.search(7)
