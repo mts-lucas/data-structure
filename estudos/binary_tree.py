@@ -14,9 +14,9 @@ class Tree:
         self.height = None
 
     def insert(self, value):
-        self.root = self._recursive_insert(root=self.root, value=value)
+        self.root = self.__recursive_insert(root=self.root, value=value)
 
-    def _recursive_insert(self, root, value):
+    def __recursive_insert(self, root, value):
 
         if root is None:
             return Node(key=value)
