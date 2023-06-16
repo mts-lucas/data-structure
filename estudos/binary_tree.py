@@ -1,11 +1,18 @@
 class Node:
-    def __init__(self, key=None, left=None, right=None) -> None:
+    def __init__(self, key=None,
+                 left=None,
+                 right=None,
+                 parent=None,
+                 height=1) -> None:
+
         self.key = key
         self.right = right
         self.left = left
+        self.parent = parent
+        self.height = height
 
     def __str__(self):
-        return f'{self.key}'
+        return self.key
 
 
 class Tree:
@@ -16,28 +23,30 @@ class Tree:
     def insert(self, value):
         self.root = self.__recursive_insert(root=self.root, value=value)
 
-    def __recursive_insert(self, root, value):
+    def __recursive_insert(self, root, value, parent=None):
 
         if root is None:
-            return Node(key=value)
+            return Node(key=value, parent=parent)
         else:
             if root.key < value:
                 root.right = self.__recursive_insert(root=root.right,
-                                                     value=value)
+                                                     value=value,
+                                                     parent=root)
             else:
                 root.left = self.__recursive_insert(root=root.left,
-                                                    value=value)
+                                                    value=value,
+                                                    parent=root)
 
         return root
 
     def print_tree(self):
         self.__recursive_print(self.root)
 
-    def __recursive_print(self, root, level=0):
+    def __recursive_print(self, root):
         if root is not None:
-            self.__recursive_print(root.right, level=level + 1)
-            print('    ' * level + str(root))
-            self.__recursive_print(root.left, level=level + 1)
+            self.__recursive_print(root.left)
+            print(root.key)
+            self.__recursive_print(root.right)
 
     def ascending_order(self):
         self.__ascending_order(self.root)
@@ -73,6 +82,9 @@ class Tree:
         else:
             return self.__recursive_search(root.left, key)
 
+    def __balance(self):
+        pass
+
 
 tree = Tree()
 
@@ -84,3 +96,4 @@ tree.insert(9)
 tree.insert(4)
 tree.insert(3)
 tree.search(7)
+tree.print_tree()
