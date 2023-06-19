@@ -18,7 +18,6 @@ class Node:
 class Tree:
     def __init__(self) -> None:
         self.root = None
-        self.height = None
 
     def insert(self, value):
         self.root = self.__recursive_insert(root=self.root, value=value)
@@ -28,6 +27,7 @@ class Tree:
         if root is None:
 
             return Node(key=value, parent=parent)
+        
         else:
 
             if root.key < value:
@@ -88,10 +88,10 @@ class Tree:
     def __balance(self):
         pass
 
-    def left_rotation(self, node):
+    def __left_rotation(self, node):
         pass
     
-    def right_rotation(self, node):
+    def __right_rotation(self, node):
         pass
 
 
