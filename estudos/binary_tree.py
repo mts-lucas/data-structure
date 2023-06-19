@@ -27,7 +27,7 @@ class Tree:
         if root is None:
 
             return Node(key=value, parent=parent)
-        
+
         else:
 
             if root.key < value:
@@ -35,10 +35,13 @@ class Tree:
                 root.right = self.__recursive_insert(root=root.right,
                                                      value=value,
                                                      parent=root)
+                root.height = self.max_child(root)
+
             else:
                 root.left = self.__recursive_insert(root=root.left,
                                                     value=value,
                                                     parent=root)
+                root.height = self.max_child(root)
 
         return root
 
@@ -85,12 +88,40 @@ class Tree:
         else:
             return self.__recursive_search(root.left, key)
 
+    def max_child(self, node: Node):
+        lcompair = 0
+        rcompair = 0
+
+        if node.left is not None:
+            lcompair = node.left.height
+        if node.right is not None:
+            rcompair = node.right.height
+
+        if lcompair >= rcompair:
+            return lcompair + 1
+
+        return rcompair + 1
+
+    def diference(self, node):
+        lcompair = 0
+        rcompair = 0
+
+        if node.left is not None:
+            lcompair = node.left.height
+        if node.right is not None:
+            rcompair = node.right.height
+
+        if lcompair >= rcompair:
+            return lcompair - rcompair
+
+        return rcompair - lcompair
+
     def __balance(self):
         pass
 
     def __left_rotation(self, node):
         pass
-    
+
     def __right_rotation(self, node):
         pass
 
