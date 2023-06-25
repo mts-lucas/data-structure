@@ -1,42 +1,35 @@
 class Node:
-    def __init__(self, key=None,
-                 left=None,
-                 right=None
-                 ) -> None:
-
+    def __init__(self, key=None, left=None, right=None):
         self.key = key
-        self.right = right
         self.left = left
+        self.right = right
 
     def __str__(self):
-        return self.key
+        return str(self.key)
 
 
 class Tree:
-    def __init__(self) -> None:
+    def __init__(self):
         self.root = None
 
     def insert(self, value):
-        self.root = self.__recursive_insert(root=self.root, value=value)
+        newnode = Node(key=value)
+        self.__recursive_insert(root=self.root, value=newnode)
 
     def __recursive_insert(self, root, value):
-
-        if root is None:
-
-            return Node(key=value)
-
+        if self.root is None:
+            self.root = value
         else:
-
-            if root.key < value:
-
-                root.right = self.__recursive_insert(
-                    root=root.right, value=value)
-
+            if root.key < value.key:
+                if root.right is None:
+                    root.right = value
+                else:
+                    self.__recursive_insert(root=root.right, value=value)
             else:
-                root.left = self.__recursive_insert(
-                    root=root.left, value=value)
-
-        return root
+                if root.left is None:
+                    root.left = value
+                else:
+                    self.__recursive_insert(root=root.left, value=value)
 
     def print_tree(self):
         self.__recursive_print(self.root)

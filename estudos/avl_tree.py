@@ -12,7 +12,7 @@ class Node:
         self.height = height
 
     def __str__(self):
-        return self.key
+        return f'{self.key}'
 
 
 class Tree:
@@ -20,28 +20,36 @@ class Tree:
         self.root = None
 
     def insert(self, value):
-        self.root = self.__recursive_insert(root=self.root, value=value)
+        newnode = Node(key=value)
+        self.root = self.__recursive_insert(root=self.root, value=newnode)
 
-    def __recursive_insert(self, root, value, parent=None):
+    def __recursive_insert(self, root, value):
+
+        print('entrou na recursividade')
 
         if root is None:
 
-            return Node(key=value, parent=parent)
+            print('entrou na arvore')
+            return value
 
         else:
-
-            if root.key < value:
-
-                root.right = self.__recursive_insert(root=root.right,
-                                                     value=value,
-                                                     parent=root)
-                root.height = self.max_child(root)
+            value.parent = root
+            print('entrou no else')
+            if root.key < value.key:
+                print('entrou na direita')
+                root.right = self.__recursive_insert(
+                    root=root.right, value=value)
+                root.height = self.__max_child(root)
+                self.__balance(root=root)
+                root.height = self.__max_child(root)
 
             else:
-                root.left = self.__recursive_insert(root=root.left,
-                                                    value=value,
-                                                    parent=root)
-                root.height = self.max_child(root)
+                print('entrou no esquerda')
+                root.left = self.__recursive_insert(
+                    root=root.left, value=value)
+                root.height = self.__max_child(root)
+                self.__balance(root=root)
+                root.height = self.__max_child(root)
 
         return root
 
@@ -117,35 +125,76 @@ class Tree:
         return rcompair - lcompair
 
     def __case(self, root: Node):
-        if (root.left.heigth > root.right.heigth) and (root.left.left.heigth > root.left.right.heigth):  # noqa: E501
-            return 1
-        elif (root.right.heigth > root.left.heigth) and (root.right.right.heigth > root.right.left.heigth):  # noqa: E501
+        if root.left is None:
+            if root.right is not None and root.right.right is not None and root.right.left is None:    # noqa: E501
+                return 4
             return 2
-        elif (root.left.heigth > root.right.heigth) and (root.left.left.heigth < root.left.right.heigth):  # noqa: E501
+        elif root.right is None:
+            if root.left is not None and root.left.left is not None and root.left.right is None:    # noqa: E501
+                return 3
+            return 1
+
+        if (root.left.height > root.right.height) and (root.left.left is not None and root.left.right is not None) and (root.left.left.height > root.left.right.height):    # noqa: E501
+            return 1
+        elif (root.right.height > root.left.height) and (root.right.right is not None and root.right.left is not None) and (root.right.right.height > root.right.left.height):    # noqa: E501
+            return 2
+        elif (root.left.height > root.right.height) and (root.left.left is not None and root.left.right is not None) and (root.left.left.height < root.left.right.height):    # noqa: E501
             return 3
-        elif (root.right.heigth > root.left.heigth) and (root.right.right.heigth < root.right.left.heigth):  # noqa: E501
+        elif (root.right.height > root.left.height) and (root.right.right is not None and root.right.left is not None) and (root.right.right.height < root.right.left.height):    # noqa: E501
             return 4
 
     def __balance(self, root):
-        if self.__diference(root) > 1:
-            c = self.__case(root)
+        node = root.parent
+        while node is not None:
+            if self.__diference(node) > 1:
+                c = self.__case(node)
 
-            if c == 1:
-                self.__right_rotation(root)
-            elif c == 2:
-                self.__left_rotation(root)
-            elif c == 3:
-                self.__left_rotation(root.left)
-                self.__right_rotation(root)
-            elif c == 4:
-                self.__right_rotation(root.right)
-                self.__left_rotation(root)
+                if c == 1:
+                    self.__right_rotation(node)
+                elif c == 2:
+                    self.__left_rotation(node)
+                elif c == 3:
+                    self.__left_rotation(node.left)
+                    self.__right_rotation(node)
+                elif c == 4:
+                    self.__right_rotation(node.right)
+                    self.__left_rotation(node)
 
     def __left_rotation(self, node):
-        pass
+        x = node.right
+        x.parent = node.parent
+
+        if node.parent is None:
+            self.root = x
+        elif node is node.parent.left:
+            node.parent.left = x
+        else:
+            node.parent.right = x
+
+        node.right = x.left
+        if x.left is not None:
+            x.left.parent = node
+
+        node.parent = x
+        x.left = node
 
     def __right_rotation(self, node):
-        pass
+        x = node.left
+        x.parent = node.parent
+
+        if node.parent is None:
+            self.root = x
+        elif node is node.parent.left:
+            node.parent.left = x
+        else:
+            node.parent.right = x
+
+        node.left = x.right
+        if x.right is not None:
+            x.right.parent = node
+
+        node.parent = x
+        x.right = node
 
 
 tree = Tree()
@@ -157,5 +206,5 @@ tree.insert(8)
 tree.insert(9)
 tree.insert(4)
 tree.insert(3)
-tree.search(7)
+tree.search(3)
 tree.print_tree()
