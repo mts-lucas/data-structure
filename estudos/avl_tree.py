@@ -21,37 +21,33 @@ class Tree:
 
     def insert(self, value):
         newnode = Node(key=value)
-        self.root = self.__recursive_insert(root=self.root, value=newnode)
+        self.__recursive_insert(root=self.root, value=newnode)
 
     def __recursive_insert(self, root, value):
 
-        print('entrou na recursividade')
+        if self.root is None:
 
-        if root is None:
-
-            print('entrou na arvore')
-            return value
+            self.root = value
 
         else:
             value.parent = root
-            print('entrou no else')
             if root.key < value.key:
-                print('entrou na direita')
-                root.right = self.__recursive_insert(
-                    root=root.right, value=value)
-                root.height = self.__max_child(root)
-                self.__balance(root=root)
-                root.height = self.__max_child(root)
+                if root.right is None:
+                    root.right = value
+                    root.height = self.__max_child(root)
+                    self.__balance(root=root)
+                    # root.height = self.__max_child(root)
+                else:
+                    self.__recursive_insert(root.right, value)
 
             else:
-                print('entrou no esquerda')
-                root.left = self.__recursive_insert(
-                    root=root.left, value=value)
-                root.height = self.__max_child(root)
-                self.__balance(root=root)
-                root.height = self.__max_child(root)
-
-        return root
+                if root.left is None:
+                    root.left = value
+                    root.height = self.__max_child(root)
+                    self.__balance(root=root)
+                    # root.height = self.__max_child(root)
+                else:
+                    self.__recursive_insert(root.left, value)
 
     def print_tree(self):
         self.__recursive_print(self.root)
@@ -206,5 +202,4 @@ tree.insert(8)
 tree.insert(9)
 tree.insert(4)
 tree.insert(3)
-tree.search(3)
 tree.print_tree()
