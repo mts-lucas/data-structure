@@ -88,7 +88,7 @@ class Tree:
         else:
             return self.__recursive_search(root.left, key)
 
-    def max_child(self, node: Node):
+    def __max_child(self, node: Node):
         lcompair = 0
         rcompair = 0
 
@@ -102,7 +102,7 @@ class Tree:
 
         return rcompair + 1
 
-    def diference(self, node):
+    def __diference(self, node):
         lcompair = 0
         rcompair = 0
 
@@ -116,8 +116,30 @@ class Tree:
 
         return rcompair - lcompair
 
-    def __balance(self):
-        pass
+    def __case(self, root: Node):
+        if (root.left.heigth > root.right.heigth) and (root.left.left.heigth > root.left.right.heigth):  # noqa: E501
+            return 1
+        elif (root.right.heigth > root.left.heigth) and (root.right.right.heigth > root.right.left.heigth):  # noqa: E501
+            return 2
+        elif (root.left.heigth > root.right.heigth) and (root.left.left.heigth < root.left.right.heigth):  # noqa: E501
+            return 3
+        elif (root.right.heigth > root.left.heigth) and (root.right.right.heigth < root.right.left.heigth):  # noqa: E501
+            return 4
+
+    def __balance(self, root):
+        if self.__diference(root) > 1:
+            c = self.__case(root)
+
+            if c == 1:
+                self.__right_rotation(root)
+            elif c == 2:
+                self.__left_rotation(root)
+            elif c == 3:
+                self.__left_rotation(root.left)
+                self.__right_rotation(root)
+            elif c == 4:
+                self.__right_rotation(root.right)
+                self.__left_rotation(root)
 
     def __left_rotation(self, node):
         pass

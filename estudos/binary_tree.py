@@ -80,7 +80,6 @@ class Tree:
             return self.__recursive_search(root.right, key)
         else:
             return self.__recursive_search(root.left, key)
-        pass
 
 
 tree = Tree()
