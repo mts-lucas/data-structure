@@ -1,12 +1,15 @@
 class Node:
     def __init__(self, key=None,
                  left=None,
-                 right=None
-                 ) -> None:
+                 right=None,
+                 parent=None,
+                 height=1) -> None:
 
         self.key = key
         self.right = right
         self.left = left
+        self.parent = parent
+        self.height = height
 
     def __str__(self):
         return self.key
@@ -19,22 +22,26 @@ class Tree:
     def insert(self, value):
         self.root = self.__recursive_insert(root=self.root, value=value)
 
-    def __recursive_insert(self, root, value):
+    def __recursive_insert(self, root, value, parent=None):
 
         if root is None:
 
-            return Node(key=value)
+            return Node(key=value, parent=parent)
 
         else:
 
             if root.key < value:
 
-                root.right = self.__recursive_insert(
-                    root=root.right, value=value)
+                root.right = self.__recursive_insert(root=root.right,
+                                                     value=value,
+                                                     parent=root)
+                root.height = self.max_child(root)
 
             else:
-                root.left = self.__recursive_insert(
-                    root=root.left, value=value)
+                root.left = self.__recursive_insert(root=root.left,
+                                                    value=value,
+                                                    parent=root)
+                root.height = self.max_child(root)
 
         return root
 
@@ -80,6 +87,42 @@ class Tree:
             return self.__recursive_search(root.right, key)
         else:
             return self.__recursive_search(root.left, key)
+
+    def max_child(self, node: Node):
+        lcompair = 0
+        rcompair = 0
+
+        if node.left is not None:
+            lcompair = node.left.height
+        if node.right is not None:
+            rcompair = node.right.height
+
+        if lcompair >= rcompair:
+            return lcompair + 1
+
+        return rcompair + 1
+
+    def diference(self, node):
+        lcompair = 0
+        rcompair = 0
+
+        if node.left is not None:
+            lcompair = node.left.height
+        if node.right is not None:
+            rcompair = node.right.height
+
+        if lcompair >= rcompair:
+            return lcompair - rcompair
+
+        return rcompair - lcompair
+
+    def __balance(self):
+        pass
+
+    def __left_rotation(self, node):
+        pass
+
+    def __right_rotation(self, node):
         pass
 
 
