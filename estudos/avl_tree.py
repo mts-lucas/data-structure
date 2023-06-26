@@ -3,7 +3,7 @@ class Node:
                  left=None,
                  right=None,
                  parent=None,
-                 height=1) -> None:
+                 height=0) -> None:
 
         self.key = key
         self.right = right
@@ -34,20 +34,19 @@ class Tree:
             if root.key < value.key:
                 if root.right is None:
                     root.right = value
-                    root.height = self.__max_child(root)
-                    self.__balance(root)
-                    root.height = self.__max_child(root)
                 else:
                     self.__recursive_insert(root.right, value)
+                self.__balance(root)
+                root.height = self.__max_child(root)
 
             else:
                 if root.left is None:
                     root.left = value
-                    root.height = self.__max_child(root)
-                    self.__balance(root)
-                    root.height = self.__max_child(root)
                 else:
                     self.__recursive_insert(root.left, value)
+
+                self.__balance(root)
+            root.height = self.__max_child(root)
 
     def print_tree(self):
         self.__recursive_print(self.root)
@@ -107,9 +106,8 @@ class Tree:
         if node is None:
             return
 
-        # self.__balance(node.left)
-        # self.__balance(node.right)
-
+        self.__balance(node.left)
+        self.__balance(node.right)
         balance_factor = self.__balance_factor(node)
         if balance_factor > 1:
             if self.__balance_factor(node.left) < 0:
@@ -150,14 +148,35 @@ class Tree:
         pivot.right = node
         node.parent = pivot
 
+    def tree_print_dot_body(self, r, filename):
+        with open(filename, 'w') as file:
+            file.write("digraph Tree {\n")
+            self._tree_print_dot_body_helper(r, file)
+            file.write("}\n")
+
+    def _tree_print_dot_body_helper(self, r, file):
+        if r is not None:
+            self._tree_print_dot_body_helper(r.left, file)
+            file.write(f'  "{id(r)}" [label="{{{id(r)}|{r.height}|{r.key}|{{'
+                       f'{id(r.left)}|{id(r.right)}}}}}"];\n')
+            if r.left:
+                file.write(f'  "{id(r)}" -> "{id(r.left)}";\n')
+            if r.right:
+                file.write(f'  "{id(r)}" -> "{id(r.right)}";\n')
+            self._tree_print_dot_body_helper(r.right, file)
+
 
 tree = Tree()
 
-tree.insert(5)
-tree.insert(2)
-tree.insert(1)
-tree.insert(8)
-tree.insert(9)
-tree.insert(4)
-tree.insert(3)
-tree.print_tree()
+# tree.insert(5)
+# tree.insert(2)
+# tree.insert(1)
+# tree.insert(8)
+# tree.insert(9)
+# tree.insert(4)
+# tree.insert(3)
+
+
+for i in range(1, 20):
+    tree.insert(i)
+tree.tree_print_dot_body(tree.root, 'avltree.dot')
