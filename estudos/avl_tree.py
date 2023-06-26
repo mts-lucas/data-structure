@@ -35,8 +35,8 @@ class Tree:
                 if root.right is None:
                     root.right = value
                     root.height = self.__max_child(root)
-                    self.__balance(root=root)
-                    # root.height = self.__max_child(root)
+                    self.__balance(root)
+                    root.height = self.__max_child(root)
                 else:
                     self.__recursive_insert(root.right, value)
 
@@ -44,8 +44,8 @@ class Tree:
                 if root.left is None:
                     root.left = value
                     root.height = self.__max_child(root)
-                    self.__balance(root=root)
-                    # root.height = self.__max_child(root)
+                    self.__balance(root)
+                    root.height = self.__max_child(root)
                 else:
                     self.__recursive_insert(root.left, value)
 
@@ -93,104 +93,62 @@ class Tree:
             return self.__recursive_search(root.left, key)
 
     def __max_child(self, node: Node):
-        lcompair = 0
-        rcompair = 0
+        left_height = node.left.height if node.left else 0
+        right_height = node.right.height if node.right else 0
+        return max(left_height, right_height) + 1
 
-        if node.left is not None:
-            lcompair = node.left.height
-        if node.right is not None:
-            rcompair = node.right.height
+    def __balance_factor(self, node):
 
-        if lcompair >= rcompair:
-            return lcompair + 1
+        left_height = node.left.height if node.left else 0
+        right_height = node.right.height if node.right else 0
+        return left_height - right_height
 
-        return rcompair + 1
+    def __balance(self, node):
+        if node is None:
+            return
 
-    def __diference(self, node):
-        lcompair = 0
-        rcompair = 0
+        # self.__balance(node.left)
+        # self.__balance(node.right)
 
-        if node.left is not None:
-            lcompair = node.left.height
-        if node.right is not None:
-            rcompair = node.right.height
-
-        if lcompair >= rcompair:
-            return lcompair - rcompair
-
-        return rcompair - lcompair
-
-    def __case(self, root: Node):
-        if root.left is None:
-            if root.right is not None and root.right.right is not None and root.right.left is None:    # noqa: E501
-                return 4
-            return 2
-        elif root.right is None:
-            if root.left is not None and root.left.left is not None and root.left.right is None:    # noqa: E501
-                return 3
-            return 1
-
-        if (root.left.height > root.right.height) and (root.left.left is not None and root.left.right is not None) and (root.left.left.height > root.left.right.height):    # noqa: E501
-            return 1
-        elif (root.right.height > root.left.height) and (root.right.right is not None and root.right.left is not None) and (root.right.right.height > root.right.left.height):    # noqa: E501
-            return 2
-        elif (root.left.height > root.right.height) and (root.left.left is not None and root.left.right is not None) and (root.left.left.height < root.left.right.height):    # noqa: E501
-            return 3
-        elif (root.right.height > root.left.height) and (root.right.right is not None and root.right.left is not None) and (root.right.right.height < root.right.left.height):    # noqa: E501
-            return 4
-
-    def __balance(self, root):
-        node = root.parent
-        while node is not None:
-            if self.__diference(node) > 1:
-                c = self.__case(node)
-
-                if c == 1:
-                    self.__right_rotation(node)
-                elif c == 2:
-                    self.__left_rotation(node)
-                elif c == 3:
-                    self.__left_rotation(node.left)
-                    self.__right_rotation(node)
-                elif c == 4:
-                    self.__right_rotation(node.right)
-                    self.__left_rotation(node)
+        balance_factor = self.__balance_factor(node)
+        if balance_factor > 1:
+            if self.__balance_factor(node.left) < 0:
+                self.__left_rotation(node.left)
+            self.__right_rotation(node)
+        elif balance_factor < -1:
+            if self.__balance_factor(node.right) > 0:
+                self.__right_rotation(node.right)
+            self.__left_rotation(node)
 
     def __left_rotation(self, node):
-        x = node.right
-        x.parent = node.parent
-
-        if node.parent is None:
-            self.root = x
-        elif node is node.parent.left:
-            node.parent.left = x
+        pivot = node.right
+        node.right = pivot.left
+        if pivot.left:
+            pivot.left.parent = node
+        pivot.parent = node.parent
+        if not node.parent:
+            self.root = pivot
+        elif node == node.parent.left:
+            node.parent.left = pivot
         else:
-            node.parent.right = x
-
-        node.right = x.left
-        if x.left is not None:
-            x.left.parent = node
-
-        node.parent = x
-        x.left = node
+            node.parent.right = pivot
+        pivot.left = node
+        node.parent = pivot
 
     def __right_rotation(self, node):
-        x = node.left
-        x.parent = node.parent
-
-        if node.parent is None:
-            self.root = x
-        elif node is node.parent.left:
-            node.parent.left = x
+        pivot = node.left
+        node.left = pivot.right
+        if pivot.right:
+            pivot.right.parent = node
+        pivot.parent = node.parent
+        if not node.parent:
+            self.root = pivot
+        elif node == node.parent.left:
+            node.parent.left = pivot
         else:
-            node.parent.right = x
-
-        node.left = x.right
-        if x.right is not None:
-            x.right.parent = node
-
-        node.parent = x
-        x.right = node
+            node.parent.right = pivot
+        pivot.right = node
+        node.parent = pivot
 
 
 tree = Tree()
