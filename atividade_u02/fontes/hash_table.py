@@ -24,10 +24,10 @@ class HashTable:
 
         self.table[self._hash_function(value)].append(value)
 
-    def search(self, key):
-        index = self._hash_function(key)
+    def search(self, value):
+        index = self._hash_function(value)
         if self.table[index]:
             for item in self.table[index]:
-                if item == key:
+                if item == value:
                     return True
         return False
