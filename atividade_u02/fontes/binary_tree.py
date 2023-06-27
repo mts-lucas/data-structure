@@ -1,4 +1,4 @@
-# import random
+import random
 import sys
 import time
 
@@ -105,14 +105,16 @@ if __name__ == "__main__":
     # caso medio
     vet = vetores.randv(n)
     # pior caso
-    # vet = vetores.sortv(n) 
+    # vet = vetores.sortv(n)
     tree = Tree()
     for i in vet:
         tree.insert(i)
+
     start = time.time_ns()
-    tree.search(10000000)
+    # caso medio
+    tree.search(random.randint(1, 100000))
+    # pior caso
+    # tree.search(n)
     end = time.time_ns()
-    tree.tree_print_dot_body(tree.root, 'binarytree.dot')
-    # tree.tree_print_dot_body(tree.root, 'binarytree_worst.dot')
     final_time = end - start
     print(final_time)

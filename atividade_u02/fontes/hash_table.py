@@ -1,4 +1,4 @@
-# import random
+import random
 import sys
 import time
 
@@ -16,6 +16,10 @@ class HashTable:
         # pior caso
 
         # return 0
+
+        # melhor caso
+
+        # return key
 
     def _re_hash(self):
         self.size = self.size * 2
@@ -47,15 +51,19 @@ class HashTable:
 if __name__ == "__main__":
 
     n = int(sys.argv[1])
-    # melhor caso
+    # melhor caso e pior caso
     vet = vetores.sortv(n)
     # caso medio
     # vet = vetores.randv(n)
     hasht = HashTable()
     for i in vet:
         hasht.insert(i)
+
     start = time.time_ns()
-    hasht.search(10000000)
+    # caso medio
+    hasht.search(random.randint(1, 100000))
+    # melhor e pior caso
+    # hasht.search(n)
     end = time.time_ns()
     final_time = end - start
     print(final_time)

@@ -179,9 +179,9 @@ if __name__ == "__main__":
     tree = Tree()
     for i in vet:
         tree.insert(i)
+
     start = time.time_ns()
-    tree.search(random.randint(1, 100000))
+    tree.search(random.randint(1, 99999))
     end = time.time_ns()
-    tree.tree_print_dot_body(tree.root, 'avltree.dot')
     final_time = end - start
     print(final_time)
