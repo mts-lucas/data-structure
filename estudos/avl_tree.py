@@ -37,7 +37,6 @@ class Tree:
                 else:
                     self.__recursive_insert(root.right, value)
                 self.__balance(root)
-                root.height = self.__max_child(root)
 
             else:
                 if root.left is None:
