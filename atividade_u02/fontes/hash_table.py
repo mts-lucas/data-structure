@@ -1,3 +1,10 @@
+import random
+import sys
+import time
+
+import vetores
+
+
 class HashTable:
     def __init__(self):
         self.size = 1
@@ -5,6 +12,10 @@ class HashTable:
 
     def _hash_function(self, key):
         return key % self.size
+
+        # pior caso
+
+        # return 0
 
     def _re_hash(self):
         self.size = self.size * 2
@@ -31,3 +42,20 @@ class HashTable:
                 if item == value:
                     return True
         return False
+
+
+if __name__ == "__main__":
+
+    n = int(sys.argv[1])
+    # melhor caso
+    vet = vetores.sortv(n)
+    # caso medio
+    # vet = vetores.randv(n)
+    hasht = HashTable()
+    for i in vet:
+        hasht.insert(i)
+    start = time.time_ns()
+    hasht.search(random.randint(1, (n*2)))
+    end = time.time_ns()
+    final_time = end - start
+    print(final_time)

@@ -10,7 +10,7 @@ def sortv(n):
     return vetor
 
 
-# caso médio arvore
+# caso médio arvore e avl
 
 def randv(n):
     vetor = []

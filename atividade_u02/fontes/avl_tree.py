@@ -1,3 +1,10 @@
+import random
+import sys
+import time
+
+import vetores
+
+
 class Node:
     def __init__(self, key=None,
                  left=None,
@@ -165,17 +172,16 @@ class Tree:
             self._tree_print_dot_body_helper(r.right, file)
 
 
-tree = Tree()
+if __name__ == "__main__":
 
-# tree.insert(5)
-# tree.insert(2)
-# tree.insert(1)
-# tree.insert(8)
-# tree.insert(9)
-# tree.insert(4)
-# tree.insert(3)
-
-
-for i in range(1, 20):
-    tree.insert(i)
-tree.tree_print_dot_body(tree.root, 'avltree.dot')
+    n = int(sys.argv[1])
+    vet = vetores.randv(n)
+    tree = Tree()
+    for i in vet:
+        tree.insert(i)
+    start = time.time_ns()
+    tree.search(random.randint(1, (n*2)))
+    end = time.time_ns()
+    tree.tree_print_dot_body(tree.root, 'avltree.dot')
+    final_time = end - start
+    print(final_time)

@@ -1,3 +1,10 @@
+import random
+import sys
+import time
+
+import vetores
+
+
 class Node:
     def __init__(self, key=None, left=None, right=None):
         self.key = key
@@ -74,14 +81,37 @@ class Tree:
         else:
             return self.__recursive_search(root.left, key)
 
+    def tree_print_dot_body(self, r, filename):
+        with open(filename, 'w') as file:
+            file.write("digraph Tree {\n")
+            self._tree_print_dot_body_helper(r, file)
+            file.write("}\n")
 
-tree = Tree()
+    def _tree_print_dot_body_helper(self, r, file):
+        if r is not None:
+            self._tree_print_dot_body_helper(r.left, file)
+            file.write(f'  "{id(r)}" [label="{{{id(r)}|{r.key}|{{'
+                       f'{id(r.left)}|{id(r.right)}}}}}"];\n')
+            if r.left:
+                file.write(f'  "{id(r)}" -> "{id(r.left)}";\n')
+            if r.right:
+                file.write(f'  "{id(r)}" -> "{id(r.right)}";\n')
+            self._tree_print_dot_body_helper(r.right, file)
 
-tree.insert(5)
-tree.insert(2)
-tree.insert(1)
-tree.insert(8)
-tree.insert(9)
-tree.insert(4)
-tree.insert(3)
-tree.print_tree()
+
+if __name__ == "__main__":
+
+    n = int(sys.argv[1])
+    # caso medio
+    vet = vetores.randv(n)
+    # pior caso
+    # vet = vetores.sortv(n) 
+    tree = Tree()
+    for i in vet:
+        tree.insert(i)
+    start = time.time_ns()
+    tree.search(random.randint(1, (n*2)))
+    end = time.time_ns()
+    tree.tree_print_dot_body(tree.root, 'binarytree.dot')
+    final_time = end - start
+    print(final_time)
