@@ -1,4 +1,4 @@
-import random
+# import random
 import sys
 import time
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     for i in vet:
         hasht.insert(i)
     start = time.time_ns()
-    hasht.search(random.randint(1, (n*2)))
+    hasht.search(10000000)
     end = time.time_ns()
     final_time = end - start
     print(final_time)

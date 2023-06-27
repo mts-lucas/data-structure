@@ -180,7 +180,7 @@ if __name__ == "__main__":
     for i in vet:
         tree.insert(i)
     start = time.time_ns()
-    tree.search(random.randint(1, (n*2)))
+    tree.search(random.randint(1, 100000))
     end = time.time_ns()
     tree.tree_print_dot_body(tree.root, 'avltree.dot')
     final_time = end - start

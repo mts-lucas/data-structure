@@ -1,4 +1,4 @@
-import random
+# import random
 import sys
 import time
 
@@ -110,7 +110,7 @@ if __name__ == "__main__":
     for i in vet:
         tree.insert(i)
     start = time.time_ns()
-    tree.search(random.randint(1, (n*2)))
+    tree.search(10000000)
     end = time.time_ns()
     tree.tree_print_dot_body(tree.root, 'binarytree.dot')
     # tree.tree_print_dot_body(tree.root, 'binarytree_worst.dot')

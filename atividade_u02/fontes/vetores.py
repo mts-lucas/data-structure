@@ -17,6 +17,6 @@ def randv(n):
     for _ in range(n):
         new_value = 0
         while new_value == 0 or new_value in vetor:
-            new_value = randint(1, n)
+            new_value = randint(1, 100000)
         vetor.append(new_value)
     return vetor
