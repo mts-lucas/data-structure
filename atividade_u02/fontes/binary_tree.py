@@ -113,5 +113,6 @@ if __name__ == "__main__":
     tree.search(random.randint(1, (n*2)))
     end = time.time_ns()
     tree.tree_print_dot_body(tree.root, 'binarytree.dot')
+    # tree.tree_print_dot_body(tree.root, 'binarytree_worst.dot')
     final_time = end - start
     print(final_time)
