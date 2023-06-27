@@ -10,7 +10,7 @@ class Node:
                  left=None,
                  right=None,
                  parent=None,
-                 height=0) -> None:
+                 height=1) -> None:
 
         self.key = key
         self.right = right
