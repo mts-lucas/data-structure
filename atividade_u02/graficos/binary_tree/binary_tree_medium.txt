@@ -1,0 +1,9 @@
+100 6710.56 67.1056 True 50 binary_tree_medium-50-100.txt
+200 8269.26 82.6926 True 50 binary_tree_medium-50-200.txt
+300 8609.65 86.0965 True 50 binary_tree_medium-50-300.txt
+400 10081.2 100.812 True 50 binary_tree_medium-50-400.txt
+500 8307.61 83.0761 True 50 binary_tree_medium-50-500.txt
+600 9460.7 94.607 True 50 binary_tree_medium-50-600.txt
+700 9917.79 99.1779 True 50 binary_tree_medium-50-700.txt
+800 9018.42 90.1842 True 50 binary_tree_medium-50-800.txt
+900 9348.53 93.4853 True 50 binary_tree_medium-50-900.txt

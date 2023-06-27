@@ -1,0 +1,9 @@
+100 7390.41 73.9041 True 50 avl_tree-50-100.txt
+200 9413.94 94.1394 True 50 avl_tree-50-200.txt
+300 8867.17 88.6717 True 50 avl_tree-50-300.txt
+400 7680.6 76.806 True 50 avl_tree-50-400.txt
+500 8741.2 87.412 True 50 avl_tree-50-500.txt
+600 9202.59 92.0259 True 50 avl_tree-50-600.txt
+700 10246 102.46 True 50 avl_tree-50-700.txt
+800 10444.5 104.445 True 50 avl_tree-50-800.txt
+900 10700 107 True 50 avl_tree-50-900.txt

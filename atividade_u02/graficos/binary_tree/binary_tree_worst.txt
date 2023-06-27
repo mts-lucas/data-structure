@@ -1,0 +1,9 @@
+100 14795.2 147.952 True 50 binary_tree_worst-50-100.txt
+200 24166.1 241.661 True 50 binary_tree_worst-50-200.txt
+300 34429.6 344.296 True 50 binary_tree_worst-50-300.txt
+400 42524 425.24 True 50 binary_tree_worst-50-400.txt
+500 45544.9 455.449 True 50 binary_tree_worst-50-500.txt
+600 48736.6 487.366 True 50 binary_tree_worst-50-600.txt
+700 41135.7 411.357 True 50 binary_tree_worst-50-700.txt
+800 45399.4 453.994 True 50 binary_tree_worst-50-800.txt
+900 49927.4 499.274 True 50 binary_tree_worst-50-900.txt
