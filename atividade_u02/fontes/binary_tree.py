@@ -66,7 +66,7 @@ class Tree:
             self.__decreasing_order(root.left)
 
     def search(self, key):
-        print(self.__recursive_search(root=self.root, key=key))
+        self.__recursive_search(root=self.root, key=key)
 
     def __recursive_search(self, root, key):
 
