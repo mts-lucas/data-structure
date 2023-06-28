@@ -1,9 +1,9 @@
-100 14795.2 147.952 True 50 binary_tree_worst-50-100.txt
-200 24166.1 241.661 True 50 binary_tree_worst-50-200.txt
-300 34429.6 344.296 True 50 binary_tree_worst-50-300.txt
-400 42524 425.24 True 50 binary_tree_worst-50-400.txt
-500 45544.9 455.449 True 50 binary_tree_worst-50-500.txt
-600 48736.6 487.366 True 50 binary_tree_worst-50-600.txt
-700 41135.7 411.357 True 50 binary_tree_worst-50-700.txt
-800 45399.4 453.994 True 50 binary_tree_worst-50-800.txt
-900 49927.4 499.274 True 50 binary_tree_worst-50-900.txt
+100 6544.64 130.893 9779 5632 50 binary_tree_worst-50-100.txt
+200 14889.9 297.798 21821 13257 50 binary_tree_worst-50-200.txt
+300 22464.5 449.29 34135 20713 50 binary_tree_worst-50-300.txt
+400 29615.8 592.316 46024 28080 50 binary_tree_worst-50-400.txt
+500 36488.9 729.778 79381 34302 50 binary_tree_worst-50-500.txt
+600 43295.4 865.908 56602 41568 50 binary_tree_worst-50-600.txt
+700 52525.5 1050.51 85457 49851 50 binary_tree_worst-50-700.txt
+800 58718.3 1174.37 70180 56923 50 binary_tree_worst-50-800.txt
+900 66409.9 1328.2 77460 64261 50 binary_tree_worst-50-900.txt
