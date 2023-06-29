@@ -8,18 +8,13 @@ import vetores
 class HashTable:
     def __init__(self):
 
-        # caso medio e pior caso
         self.size = 1
         self.table = [[]]
-
-        # melhor caso
-        # self.size = 2
-        # self.table = [[], [25]]
 
     def _hash_function(self, key):
         return key % self.size
 
-        # pior caso e melhor caso
+        # pior caso
 
         # return 0
 
@@ -43,10 +38,7 @@ class HashTable:
         self.table[self._hash_function(value)].append(value)
 
     def search(self, value):
-        # pior e caso medio
         index = self._hash_function(value)
-        # melhor caso
-        # index = 1
         if self.table[index]:
             for item in self.table[index]:
                 if item == value:
@@ -57,8 +49,10 @@ class HashTable:
 if __name__ == "__main__":
 
     n = int(sys.argv[1])
-    # melhor caso e pior caso
+    # pior caso
     vet = vetores.sortv(n)
+    # melhor caso
+    # vet = vetores.parv(n)
     # caso medio
     # vet = vetores.randv(n)
     hasht = HashTable()
@@ -69,9 +63,9 @@ if __name__ == "__main__":
     # caso medio
     hasht.search(random.randint(1, 100000))
     # pior caso
-    # hasht.search(n)
+    # hasht.search(n + 1)
     # melhor caso
-    # hasht.search(25)
+    # hasht.search(2)
     end = time.time_ns()
     final_time = end - start
     print(final_time)
