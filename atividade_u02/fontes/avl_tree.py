@@ -175,13 +175,18 @@ class Tree:
 if __name__ == "__main__":
 
     n = int(sys.argv[1])
-    vet = vetores.randv(n)
+    vet = vetores.sortv(n)
     tree = Tree()
     for i in vet:
         tree.insert(i)
 
     start = time.time_ns()
+    # caso medio
     tree.search(random.randint(1, 99999))
+    # melhor caso
+    # tree.search(vet[(len(vet)//2)])
+    # pior caso
+    # tree.search(vet[n])
     end = time.time_ns()
     final_time = end - start
     print(final_time)

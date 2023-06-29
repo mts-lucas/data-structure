@@ -102,7 +102,7 @@ class Tree:
 if __name__ == "__main__":
 
     n = int(sys.argv[1])
-    # caso medio
+    # caso medio e melhor caso
     vet = vetores.randv(n)
     # pior caso
     # vet = vetores.sortv(n)
@@ -115,6 +115,9 @@ if __name__ == "__main__":
     tree.search(random.randint(1, 100000))
     # pior caso
     # tree.search(n)
+    # melhor caso
+    # tree.search(vet[0])
+
     end = time.time_ns()
     final_time = end - start
     print(final_time)
