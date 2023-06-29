@@ -185,7 +185,7 @@ if __name__ == "__main__":
 
     start = time.time_ns()
     # caso medio
-    tree.search(random.randint(1, 99999))
+    tree.search(random.randint(1000, 10000))
     # melhor caso
     # tree.search(tree.root.key)
     # pior caso

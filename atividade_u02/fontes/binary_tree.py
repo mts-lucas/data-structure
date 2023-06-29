@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
     start = time.time_ns()
     # caso medio
-    tree.search(random.randint(1, 100000))
+    tree.search(random.randint(1000, 10000))
     # pior caso
     # tree.search(100000000)
     # melhor caso
