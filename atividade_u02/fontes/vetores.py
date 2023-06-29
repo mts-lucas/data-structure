@@ -20,3 +20,10 @@ def randv(n):
             new_value = randint(1, 100000)
         vetor.append(new_value)
     return vetor
+
+
+def parv(n):
+    vetor = []
+    for i in range(2, n, 2):
+        vetor.append(i)
+    return vetor
