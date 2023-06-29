@@ -114,7 +114,7 @@ if __name__ == "__main__":
     # caso medio
     tree.search(random.randint(1, 100000))
     # pior caso
-    # tree.search(n)
+    # tree.search(100000000)
     # melhor caso
     # tree.search(vet[0])
 
