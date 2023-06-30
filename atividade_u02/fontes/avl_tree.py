@@ -176,9 +176,9 @@ if __name__ == "__main__":
 
     n = int(sys.argv[1])
     # caso medio e melhor
-    # vet = vetores.randv(n)
+    vet = vetores.randv(n)
     # pior
-    vet = vetores.sortv(n)
+    # vet = vetores.sortv(n)
     tree = Tree()
     for i in vet:
         tree.insert(i)
