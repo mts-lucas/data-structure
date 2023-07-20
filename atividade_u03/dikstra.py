@@ -124,4 +124,5 @@ if __name__ == "__main__":
 
     # Print apenas o caminho mais curto de start a end
     shortest_path_string = ' -> '.join(str(node) for node in shortest_path)
+    print(f"\nA distancia entre {start} e {end}: {dists[end]}")
     print(f"\nCaminho mais curto de {start} a {end}: {shortest_path_string}")
