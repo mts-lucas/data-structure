@@ -1,5 +1,6 @@
 import sys
 import time
+# comment
 
 from randomic_vetor import randVetor
 
